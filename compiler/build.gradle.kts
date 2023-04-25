@@ -32,7 +32,7 @@ tasks.withType<Test>().configureEach {
 }
 
 dependencies {
-    compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.8.20")
+    compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.8.21")
     implementation("com.google.auto.service:auto-service-annotations:1.0.1")
     ksp("dev.zacsweers.autoservice:auto-service-ksp:1.0.0")
 

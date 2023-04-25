@@ -37,5 +37,5 @@ tasks.withType<JavaCompile> {
 }
 
 dependencies {
-    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin-api:1.8.20")
+    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin-api:1.8.21")
 }
