@@ -11,7 +11,6 @@ plugins {
     kotlin("jvm") version "1.8.20"
     `kotlin-dsl`
     id("com.vanniktech.maven.publish") version "0.25.1"
-    id("com.google.devtools.ksp") version "1.8.20-1.0.11"
 }
 
 repositories {
@@ -26,18 +25,4 @@ tasks.withType<KotlinCompile> {
 tasks.withType<JavaCompile> {
     sourceCompatibility = JavaVersion.VERSION_11.toString()
     targetCompatibility = JavaVersion.VERSION_11.toString()
-}
-
-tasks.withType<Test>().configureEach {
-    useJUnitPlatform()
-}
-
-dependencies {
-    compileOnly("org.jetbrains.kotlin:kotlin-compiler-embeddable:1.8.20")
-    implementation("com.google.auto.service:auto-service-annotations:1.0.1")
-    ksp("dev.zacsweers.autoservice:auto-service-ksp:1.0.0")
-
-    testImplementation("io.kotest:kotest-runner-junit5:5.6.1")
-    testImplementation("io.strikt:strikt-core:0.34.1")
-    testImplementation("com.github.tschuchortdev:kotlin-compile-testing:1.5.0")
 }
