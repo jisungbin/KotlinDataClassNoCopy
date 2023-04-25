@@ -10,7 +10,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.8.20"
     `kotlin-dsl`
-    id("com.vanniktech.maven.publish") version "0.25.1"
+    id("com.vanniktech.maven.publish") version "0.25.2"
     id("com.google.devtools.ksp") version "1.8.20-1.0.11"
 }
 
