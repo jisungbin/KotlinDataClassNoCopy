@@ -5,10 +5,13 @@
  * Please see full license: https://github.com/jisungbin/KotlinDataClassNoCopy/blob/main/LICENSE
  */
 
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
 rootProject.name = "KotlinDataClassNoCopy"
 
 include(
-    ":compiler",
     ":annotation",
+    ":compiler",
     ":gradle-plugin",
+    ":sample",
 )
