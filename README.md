@@ -1,6 +1,6 @@
 # KotlinDataClassNoCopy
 
-> Suppress the generation of the `copy()` function in Kotlin's data class.
+> Suppress the generation of the `copy()` function in Kotlin's `data class`.
 
 Kotlin's `data class` is a really cool feature that automatically generates useful functions like `equals`, `hashCode`, `copy`, and `componentN`.
 
@@ -31,7 +31,7 @@ This `data class` only accepts the name "Zohn", but the auto-generated `copy()` 
 val Zosh = Adult.from("Zohn").copy(age = 21, name = "Zosh")
 ```
 
-With this libraryThis library uses the Kotlin Compiler Plugin, which is still unstable. So you may see unexpected bugs., the `copy()` function of `data class` is no longer accessible.
+With this library, the `copy()` function of `data class` is no longer accessible.
 
 ```
 Cannot access 'copy': it is internal.
