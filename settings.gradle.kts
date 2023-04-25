@@ -7,4 +7,7 @@
 
 rootProject.name = "KotlinDataClassNoCopy"
 
-include(":annotation")
+include(
+    ":annotation",
+    ":gradle-plugin",
+)
