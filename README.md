@@ -41,7 +41,7 @@ Unresolved reference: copy
 
 ## Download ![maven-central](https://img.shields.io/maven-central/v/land.sungbin.kotlin.dataclass.nocopy/kotlin-dataclass-nocopy-gradle)
 
-- Kotlin 1.8.20: `1.0.3`
+- Kotlin 1.8.20: `1.0.x`
 
 ```gradle
 plugins {
