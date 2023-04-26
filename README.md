@@ -43,7 +43,7 @@ Unresolved reference: copy
 
 ```gradle
 plugins {
-    id("land.sungbin.kotlin.dataclass.nocopy.plugin") version "$version"
+  id("land.sungbin.kotlin.dataclass.nocopy.plugin") version "$version"
 }
 ```
 
