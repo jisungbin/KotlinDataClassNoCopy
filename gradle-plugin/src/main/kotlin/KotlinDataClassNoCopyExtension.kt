@@ -10,6 +10,13 @@ import org.gradle.api.model.ObjectFactory
 import org.gradle.api.provider.Property
 
 abstract class KotlinDataClassNoCopyExtension @Inject constructor(objects: ObjectFactory) {
+    /**
+     * Whether NoCopy is enabled
+     */
     val enabled: Property<Boolean> = objects.property(Boolean::class.javaObjectType).convention(true)
+
+    /**
+     * Whether to show verbose logging
+     */
     val verbose: Property<Boolean> = objects.property(Boolean::class.javaObjectType).convention(false)
 }

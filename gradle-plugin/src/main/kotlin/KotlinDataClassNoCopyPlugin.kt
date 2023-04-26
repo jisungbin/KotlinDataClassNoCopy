@@ -18,11 +18,11 @@ private val Artifacts = object {
     val groupId = "land.sungbin.kotlin.dataclass.nocopy"
     val annotation = object {
         val artifactId = "kotlin-dataclass-nocopy-annotation"
-        val version = "1.0.5"
+        val version = "1.0.6"
     }
     val compiler = object {
         val artifactId = "kotlin-dataclass-nocopy-compiler"
-        val version = "1.0.3"
+        val version = "1.0.4"
     }
 }
 private const val CompilerPluginId = "land.sungbin.kotlin.dataclass.nocopy.compiler"

@@ -8,4 +8,4 @@
 import org.jetbrains.kotlin.name.FqName
 
 internal const val copy = "copy"
-internal val NoCopyFqn = FqName("NoCopy")
+internal val NoCopyFqn = FqName("land.sungbin.kotlin.dataclass.nocopy.NoCopy")

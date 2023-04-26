@@ -52,7 +52,7 @@ plugins {
 Apply the `@NoCopy` annotation to `data class`.
 
 ```kotlin
-@NoCopy
+@land.sungbin.kotlin.dataclass.nocopy.NoCopy
 data class Adult private constructor(
   val age: Int,
   val name: String,

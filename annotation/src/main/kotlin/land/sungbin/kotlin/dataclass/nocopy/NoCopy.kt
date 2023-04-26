@@ -5,6 +5,8 @@
  * Please see full license: https://github.com/jisungbin/KotlinDataClassNoCopy/blob/main/LICENSE
  */
 
+package land.sungbin.kotlin.dataclass.nocopy
+
 /**
  * Suppress the generation of the `copy()` function in Kotlin's data class.
  */

@@ -28,6 +28,8 @@ class NoCopyTest : StringSpec() {
         "@NoCopy는 오직 data class에서만 사용할 수 있음" {
             val result = compile(
                 source = """
+import land.sungbin.kotlin.dataclass.nocopy.NoCopy
+
 @NoCopy
 class Error
                          """,
@@ -54,6 +56,8 @@ data class TestClass(val value: Any) {
         "@NoCopy가 있는 data class는 copy 함수가 생성되지 않음" {
             val result = compile(
                 source = """
+import land.sungbin.kotlin.dataclass.nocopy.NoCopy
+
 @NoCopy
 data class TestClass(val value: Any) {
     init {
@@ -71,6 +75,8 @@ data class TestClass(val value: Any) {
             val result = compile(
                 noCopyEnabled = false,
                 source = """
+import land.sungbin.kotlin.dataclass.nocopy.NoCopy
+
 @NoCopy
 data class TestClass(val value: Any) {
     init {
@@ -127,6 +133,8 @@ data class TestClass(val value: Any) {
 private val material = kotlin(
     "NoCopy.kt",
     """
+package land.sungbin.kotlin.dataclass.nocopy
+
 @Retention(AnnotationRetention.SOURCE)
 @Target(AnnotationTarget.CLASS)
 annotation class NoCopy

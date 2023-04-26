@@ -7,6 +7,10 @@
 
 @file:Suppress("DataClassPrivateConstructor", "LocalVariableName")
 
+package land.sungbin.kotlin.dataclass.nocopy.sample
+
+import land.sungbin.kotlin.dataclass.nocopy.NoCopy
+
 @NoCopy
 data class Adult private constructor(
     val age: Int,
