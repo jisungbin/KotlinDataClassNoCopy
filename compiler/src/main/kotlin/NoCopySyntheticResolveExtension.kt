@@ -32,7 +32,7 @@ internal class NoCopySyntheticResolveExtension(private val logger: Logger) : Syn
 
         if (!thisDescriptor.isData) {
             logger.throwError(
-                value = Errors.NoCopyAppliedWrongTarget,
+                value = Errors.noCopyAppliedWrongTarget(target = thisDescriptor.name.asString()),
                 location = location,
             )
         }

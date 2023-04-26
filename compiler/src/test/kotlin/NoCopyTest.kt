@@ -28,15 +28,13 @@ class NoCopyTest : StringSpec() {
         "@NoCopy는 오직 data class에서만 사용할 수 있음" {
             val result = compile(
                 source = """
-import land.sungbin.kotlin.dataclass.nocopy.NoCopy
-
 @NoCopy
 class Error
                          """,
             )
 
             expectThat(result.exitCode).isEqualTo(KotlinCompilation.ExitCode.INTERNAL_ERROR)
-            expectThat(result.messages).contains(Errors.NoCopyAppliedWrongTarget)
+            expectThat(result.messages).contains(Errors.noCopyAppliedWrongTarget(target = "Error"))
         }
 
         "@NoCopy가 없는 data class는 정상적으로 copy를 사용할 수 있음" {
@@ -56,8 +54,6 @@ data class TestClass(val value: Any) {
         "@NoCopy가 있는 data class는 copy 함수가 생성되지 않음" {
             val result = compile(
                 source = """
-import land.sungbin.kotlin.dataclass.nocopy.NoCopy
-
 @NoCopy
 data class TestClass(val value: Any) {
     init {
@@ -75,8 +71,6 @@ data class TestClass(val value: Any) {
             val result = compile(
                 noCopyEnabled = false,
                 source = """
-import land.sungbin.kotlin.dataclass.nocopy.NoCopy
-
 @NoCopy
 data class TestClass(val value: Any) {
     init {
@@ -101,9 +95,14 @@ data class TestClass(val value: Any) {
             supportsK2 = false
             pluginOptions = listOf(
                 PluginOption(
-                    pluginId = PluginId,
+                    pluginId = CompilerPluginId,
                     optionName = OPTION_ENABLED.optionName,
                     optionValue = noCopyEnabled.toString(),
+                ),
+                PluginOption(
+                    pluginId = CompilerPluginId,
+                    optionName = OPTION_VERBOSE.optionName,
+                    optionValue = "true",
                 ),
             )
             verbose = false
@@ -128,11 +127,8 @@ data class TestClass(val value: Any) {
 private val material = kotlin(
     "NoCopy.kt",
     """
-package land.sungbin.kotlin.dataclass.nocopy
-
 @Retention(AnnotationRetention.SOURCE)
 @Target(AnnotationTarget.CLASS)
-@MustBeDocumented
 annotation class NoCopy
     """,
 )

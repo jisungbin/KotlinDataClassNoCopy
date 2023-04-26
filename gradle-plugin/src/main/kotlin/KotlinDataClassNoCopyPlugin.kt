@@ -18,21 +18,21 @@ private val Artifacts = object {
     val groupId = "land.sungbin.kotlin.dataclass.nocopy"
     val annotation = object {
         val artifactId = "kotlin-dataclass-nocopy-annotation"
-        val version = "1.0.2"
+        val version = "1.0.5"
     }
     val compiler = object {
         val artifactId = "kotlin-dataclass-nocopy-compiler"
-        val version = "1.0.2"
+        val version = "1.0.3"
     }
 }
-private const val PluginId = "land.sungbin.kotlin.dataclass.nocopy.plugin"
+private const val CompilerPluginId = "land.sungbin.kotlin.dataclass.nocopy.compiler"
 
 class KotlinDataClassNoCopyPlugin : KotlinCompilerPluginSupportPlugin {
     override fun apply(target: Project) {
         target.extensions.create("nocopy", KotlinDataClassNoCopyExtension::class.java)
     }
 
-    override fun getCompilerPluginId() = PluginId
+    override fun getCompilerPluginId() = CompilerPluginId
 
     override fun getPluginArtifact() = SubpluginArtifact(
         groupId = Artifacts.groupId,
@@ -56,10 +56,7 @@ class KotlinDataClassNoCopyPlugin : KotlinCompilerPluginSupportPlugin {
             append(":")
             append(Artifacts.annotation.version)
         }
-        project.configurations
-            .getByName("implementation")
-            .dependencies
-            .add(project.dependencies.create(annotationArtifact))
+        project.dependencies.add("implementation", annotationArtifact)
 
         return project.provider {
             listOf(

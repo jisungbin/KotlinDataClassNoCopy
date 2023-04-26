@@ -6,6 +6,8 @@
  */
 
 internal object Errors {
-    const val NoCopyAppliedWrongTarget = "NoCopy is only supported for data classes."
+    fun noCopyAppliedWrongTarget(target: String): String {
+        return "NoCopy is only supported for data classes. ($target)"
+    }
     const val CopyFunctionNotFound = "The copy function was not found."
 }

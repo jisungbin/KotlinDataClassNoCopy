@@ -5,24 +5,38 @@
  * Please see full license: https://github.com/jisungbin/KotlinDataClassNoCopy/blob/main/LICENSE
  */
 
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+@file:Suppress("DSL_SCOPE_VIOLATION")
+
+import org.jetbrains.kotlin.gradle.dsl.KotlinProjectExtension
 
 plugins {
-    kotlin("jvm") version "1.8.20"
-    `kotlin-dsl`
-    id("com.vanniktech.maven.publish") version "0.25.1"
+    alias(libs.plugins.kotlin.jvm) apply false
+    alias(libs.plugins.kotlin.ksp) apply false
+    alias(libs.plugins.maven.publish) apply false
 }
 
-repositories {
-    mavenCentral()
-    gradlePluginPortal()
-}
+subprojects {
+    apply {
+        plugin(rootProject.libs.plugins.kotlin.jvm.get().pluginId)
+    }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "11"
-}
+    repositories {
+        mavenCentral()
+    }
 
-tasks.withType<JavaCompile> {
-    sourceCompatibility = JavaVersion.VERSION_11.toString()
-    targetCompatibility = JavaVersion.VERSION_11.toString()
+    afterEvaluate {
+        extensions.configure<JavaPluginExtension> {
+            sourceCompatibility = JavaVersion.VERSION_11
+            targetCompatibility = JavaVersion.VERSION_11
+        }
+
+        extensions.configure<KotlinProjectExtension> {
+            jvmToolchain(11)
+        }
+
+        extensions.configure<SourceSetContainer> {
+            getByName("main").java.srcDirs("src/main/kotlin/")
+            getByName("test").java.srcDirs("src/test/kotlin/")
+        }
+    }
 }

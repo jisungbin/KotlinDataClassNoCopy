@@ -15,7 +15,7 @@ import org.jetbrains.kotlin.compiler.plugin.ExperimentalCompilerApi
 import org.jetbrains.kotlin.config.CompilerConfiguration
 import org.jetbrains.kotlin.config.CompilerConfigurationKey
 
-internal const val PluginId = "land.sungbin.kotlin.dataclass.nocopy"
+internal const val CompilerPluginId = "land.sungbin.kotlin.dataclass.nocopy.compiler"
 
 internal val KEY_ENABLED = CompilerConfigurationKey<Boolean>(
     "Whether to disable copy() generation - default is true",
@@ -24,7 +24,7 @@ internal val OPTION_ENABLED = CliOption(
     optionName = "enabled",
     valueDescription = "<true | false>",
     description = KEY_ENABLED.toString(),
-    required = false,
+    required = true,
     allowMultipleOccurrences = false,
 )
 
@@ -35,15 +35,18 @@ internal val OPTION_VERBOSE = CliOption(
     optionName = "verbose",
     valueDescription = "<true | false>",
     description = KEY_VERBOSE.toString(),
-    required = false,
+    required = true,
     allowMultipleOccurrences = false,
 )
 
 @AutoService(CommandLineProcessor::class)
 class NoCopyCommandLineProcessor : CommandLineProcessor {
-    override val pluginId = PluginId
+    override val pluginId = CompilerPluginId
 
-    override val pluginOptions = listOf(OPTION_ENABLED)
+    override val pluginOptions = listOf(
+        OPTION_ENABLED,
+        OPTION_VERBOSE,
+    )
 
     override fun processOption(
         option: AbstractCliOption,

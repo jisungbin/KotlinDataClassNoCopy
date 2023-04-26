@@ -34,7 +34,7 @@ val Zosh = Adult.from("Zohn").copy(age = 21, name = "Zosh")
 With this library, the `copy()` function of `data class` is no longer accessible.
 
 ```
-Cannot access 'copy': it is internal.
+Unresolved reference: copy
 ```
 
 ---

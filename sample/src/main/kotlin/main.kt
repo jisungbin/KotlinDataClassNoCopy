@@ -7,7 +7,7 @@
 
 @file:Suppress("DataClassPrivateConstructor", "LocalVariableName")
 
-@land.sungbin.kotlin.dataclass.nocopy.NoCopy
+@NoCopy
 data class Adult private constructor(
     val age: Int,
     val name: String,
@@ -25,5 +25,5 @@ data class Adult private constructor(
 
 fun main() {
     val Zosh = Adult.from("Zohn").copy(age = 21, name = "Zosh")
-    println(Zosh)
+    println(Zosh.toString())
 }

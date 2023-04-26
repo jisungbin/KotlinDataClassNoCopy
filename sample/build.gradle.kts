@@ -5,24 +5,23 @@
  * Please see full license: https://github.com/jisungbin/KotlinDataClassNoCopy/blob/main/LICENSE
  */
 
+@file:Suppress("DSL_SCOPE_VIOLATION")
+
 import org.jetbrains.kotlin.gradle.plugin.PLUGIN_CLASSPATH_CONFIGURATION_NAME as kotlinCompilerPlugin
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-plugins {
-    kotlin("jvm")
-}
-
-repositories {
-    mavenCentral()
-}
-
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "11"
-}
-
-tasks.withType<JavaCompile> {
-    sourceCompatibility = JavaVersion.VERSION_11.toString()
-    targetCompatibility = JavaVersion.VERSION_11.toString()
+    val compilerPluginId = "land.sungbin.kotlin.dataclass.nocopy.compiler"
+    kotlinOptions {
+        freeCompilerArgs = freeCompilerArgs + listOf(
+            "-P",
+            "plugin:$compilerPluginId:enabled=true",
+        )
+        freeCompilerArgs = freeCompilerArgs + listOf(
+            "-P",
+            "plugin:$compilerPluginId:verbose=true",
+        )
+    }
 }
 
 dependencies {

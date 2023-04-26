@@ -25,7 +25,7 @@ internal interface Logger {
     }
 }
 
-internal fun CompilerConfiguration.getLogger(verbose: Boolean = true): Logger {
+internal fun CompilerConfiguration.getLogger(verbose: Boolean): Logger {
     val messageCollector = get(
         CLIConfigurationKeys.MESSAGE_COLLECTOR_KEY,
         MessageCollector.NONE,

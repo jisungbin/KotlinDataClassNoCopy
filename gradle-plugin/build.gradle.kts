@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 /*
  * Developed by Ji Sungbin, 2023
  *
@@ -7,11 +5,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
  * Please see full license: https://github.com/jisungbin/KotlinDataClassNoCopy/blob/main/LICENSE
  */
 
+@file:Suppress("DSL_SCOPE_VIOLATION")
+
 plugins {
-    kotlin("jvm")
-    `kotlin-dsl`
-    `maven-publish`
-    id("com.vanniktech.maven.publish")
+    `java-gradle-plugin`
+    id(libs.plugins.maven.publish.get().pluginId)
 }
 
 gradlePlugin {
@@ -23,19 +21,6 @@ gradlePlugin {
     }
 }
 
-repositories {
-    mavenCentral()
-}
-
-tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "11"
-}
-
-tasks.withType<JavaCompile> {
-    sourceCompatibility = JavaVersion.VERSION_11.toString()
-    targetCompatibility = JavaVersion.VERSION_11.toString()
-}
-
 dependencies {
-    compileOnly("org.jetbrains.kotlin:kotlin-gradle-plugin-api:1.8.20")
+    compileOnly(libs.kotlin.gradle.plugin.api)
 }
