@@ -10,18 +10,18 @@ For example, code like this:
 
 ```kotlin
 data class Adult private constructor(
-    val age: Int,
-    val name: String,
+  val age: Int,
+  val name: String,
 ) {
-    companion object {
-        fun from(name: String): Adult {
-            return if (name == "Zohn") {
-                Adult(age = 49, name = "Zohn")
-            } else {
-                error("No one allowed except \"Zohn\".")
-            }
-        }
+  companion object {
+    fun from(name: String): Adult {
+      return if (name == "Zohn") { 
+        Adult(age = 49, name = "Zohn")
+      } else { 
+        error("No one allowed except \"Zohn\".")
+      }
     }
+  }
 }
 ```
 
@@ -49,30 +49,42 @@ plugins {
 
 ## Usage
 
-Apply the `@land.sungbin.kotlin.dataclass.nocopy.NoCopy` annotation to `data class`.
+Apply the `@NoCopy` annotation to `data class`.
 
 ```kotlin
-@land.sungbin.kotlin.dataclass.nocopy.NoCopy
+@NoCopy
 data class Adult private constructor(
-    val age: Int,
-    val name: String,
+  val age: Int,
+  val name: String,
 ) {
-    companion object {
-        fun from(name: String): Adult {
-            return if (name == "Zohn") {
-                Adult(age = 49, name = "Zohn")
-            } else {
-                error("No one allowed except \"Zohn\".")
-            }
-        }
+  companion object {
+    fun from(name: String): Adult {
+      return if (name == "Zohn") { 
+        Adult(age = 49, name = "Zohn")
+      } else { 
+        error("No one allowed except \"Zohn\".")
+      }
     }
+  }
+}
+```
+
+You can configure plugin with properties on the `nocopy` extension.
+
+```kotlin
+nocopy {
+  // Whether NoCopy is enabled
+  enabled.set(true) // default
+  
+  // Whether to show verbose logging
+  verbose.set(false) // default
 }
 ```
 
 ## Caveats
 
 - Interaction with IDEs is not yet supported. (there is no public API to handle this)
-- This library uses the Kotlin Compiler Plugin, which is still unstable. So, you can see unexpected bugs.
+- This library uses the Kotlin Compiler Plugin, which is still unstable.
 
 ## License
 
