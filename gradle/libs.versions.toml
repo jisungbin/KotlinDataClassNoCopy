@@ -1,5 +1,5 @@
 [versions]
-maven-publish = "0.25.2"
+maven-publish = "0.25.3"
 
 autoservice-annotation = "1.0.1"
 autoservice-processpr = "1.0.0"
