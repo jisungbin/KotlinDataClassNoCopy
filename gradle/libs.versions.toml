@@ -2,7 +2,7 @@
 maven-publish = "0.25.2"
 
 autoservice-annotation = "1.0.1"
-autoservice-processpr = "1.0.0"
+autoservice-processpr = "1.1.0"
 
 kotlin-core = "1.8.20"
 kotlin-ksp = "1.8.20-1.0.11"
